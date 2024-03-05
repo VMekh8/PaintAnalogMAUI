@@ -1,4 +1,6 @@
-﻿namespace PaintAnalogMAUI
+﻿using SkiaSharp;
+
+namespace PaintAnalogMAUI
 {
     public partial class MainPage : ContentPage
     {
@@ -8,7 +10,6 @@
         {
             InitializeComponent();
         }
-
         private void OnCounterClicked(object sender, EventArgs e)
         {
             count++;
