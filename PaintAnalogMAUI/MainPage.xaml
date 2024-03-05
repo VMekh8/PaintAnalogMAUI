@@ -1,27 +1,31 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:cp="https://trungnt2910.github.io/schemas/maui/2022/colorpicker"
+             xmlns:skia="clr-namespace:SkiaSharp.Views.Maui.Controls;assembly=SkiaSharp.Views.Maui.Controls"
              x:Class="PaintAnalogMAUI.MainPage">
 
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="50">
+            </RowDefinition>
         </Grid.RowDefinitions>
 
+        
         <Picker 
             x:Name="StrokePicker"
             Grid.Row="0"
             WidthRequest="125" 
             HorizontalOptions="Start" 
+            Title="Pick a Width"
             Margin="2"
-            Title="Pick a width"
             TextColor="Black"
             TitleColor="Black"
             SelectedIndex="0"
             HorizontalTextAlignment="Center"
-            FontSize="18"
-            >
+            FontSize="18">
 
             <Picker.Items>
                 <x:String>10</x:String>
@@ -38,9 +42,70 @@
             
         </Picker>
 
+        <Picker 
+            x:Name="StylePicker"
+            Grid.Row="0"
+            WidthRequest="125" 
+            HorizontalOptions="Center" 
+            Margin="2"
+            Title="Pick a style"
+            TextColor="Black"
+            TitleColor="Black"
+            SelectedIndex="0"
+            HorizontalTextAlignment="Center"
+            FontSize="18">
+
+            <Picker.Items>
+                <x:String>Fill</x:String>
+                <x:String>Stroke</x:String>
+                <x:String>StrokeAndFill</x:String>
+            </Picker.Items>
+
+        </Picker>
         
-        
-        
+        <Button 
+            x:Name ="ClearBtn"
+            Grid.Row="0"
+            WidthRequest="75"
+            Margin="3"
+            HorizontalOptions="End"
+            Text="Clear"
+            />
+
+
+        <skia:SKCanvasView
+            x:Name="canvasView"
+            Grid.Row="1"
+            PaintSurface="OnCanvasViewPaintSurface"
+            BackgroundColor="White"
+        />
+
+        <cp:ColorPicker
+            x:Name="ColorPicker"
+            Grid.Row="3"
+            HorizontalOptions="End"
+            PickedColor="Blue"
+            WidthRequest="230">
+        </cp:ColorPicker>
+
+        <HorizontalStackLayout
+            Grid.Row="3"
+            WidthRequest="200"
+            HorizontalOptions="Start">
+        <Button x:Name ="ChangeColorBtn"
+                WidthRequest="75"
+                Margin="3"
+                HorizontalOptions="Start"
+                Text="Color Change"/>
+
+        <Button x:Name ="ChangeBackBtn"
+                WidthRequest="75"
+                Margin="3"
+                HorizontalOptions="Center"
+                Text="Background Change"/>
+        </HorizontalStackLayout>
+       
+
     </Grid>
 
 </ContentPage>
