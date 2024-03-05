@@ -1,26 +1,26 @@
 ﻿using SkiaSharp;
+using System.Diagnostics;
 
 namespace PaintAnalogMAUI
 {
     public partial class MainPage : ContentPage
     {
-        int count = 0;
+        DrawProperty drawProperty;
 
         public MainPage()
         {
             InitializeComponent();
-        }
-        private void OnCounterClicked(object sender, EventArgs e)
-        {
-            count++;
+            drawProperty = new DrawProperty();
 
-            if (count == 1)
-                CounterBtn.Text = $"Clicked {count} time";
-            else
-                CounterBtn.Text = $"Clicked {count} times";
-
-            SemanticScreenReader.Announce(CounterBtn.Text);
+            StrokePicker.SelectedIndexChanged += (o, e) =>
+            {
+                drawProperty._strokeWidth = Convert.ToInt32(StrokePicker.SelectedItem);
+                Debug.WriteLine(drawProperty._strokeWidth);
+            };
         }
+
+        
+       
     }
 
 }
